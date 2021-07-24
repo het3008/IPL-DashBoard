@@ -18,13 +18,13 @@ public class MatchInput {
     private String method;
     private String umpire1;
     private String umpire2;
+    
     public String getId() {
         return id;
     }
     public void setId(String id) {
         this.id = id;
     }
-    
     public String getCity() {
         return city;
     }
@@ -121,5 +121,7 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
+
+    
 
 }
