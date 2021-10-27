@@ -14,7 +14,7 @@ export const TeamPage = () => {
     useEffect(
         () => {
          const fetchTeam = async () => {
-                const response = await fetch(`http://localhost:8080/team/${teamName}`);
+                const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}`);
                 const data = await response.json();
                 setTeam(data);
     
@@ -26,9 +26,9 @@ export const TeamPage = () => {
             }, [teamName]
         );
 
-    if (!team || !team.teamName) {
+   /*if (!team || !team.teamName) {
         return <h1>Team not found!</h1>
-    }
+    }*/
     return (
         <div className="TeamPage">
           <div className="team-name-section">  
@@ -55,7 +55,7 @@ export const TeamPage = () => {
             <MatchDetailCard  teamName={team.teamName} match={team.matches[0]}/>
             </div>  
 
-            {team.matches.slice(1).map(match => <MatchSmallCard teamName={team.teamName} match={match} />)}
+            {team.matches.slice(1).map(match => <MatchSmallCard key={match.id} teamName={team.teamName} match={match} />)}
 
             <div className="more-link">
             <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}> More > </Link>
